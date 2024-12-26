@@ -1,0 +1,60 @@
+.custom-card {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.content-columns {
+  display: flex;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.size-price-container,
+.additive-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  margin-right: 3rem;
+}
+
+.full-width-input {
+  margin-top: 40px;
+  width: 15rem;
+}
+.additives-section {
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  margin-left: auto;
+}
+.item-section {
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+.additives-section h3 {
+  margin-bottom: 10px;
+}

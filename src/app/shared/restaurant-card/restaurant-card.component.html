@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-img-top rounded-circle mx-auto d-block">
+    <img [src]="getImageUrl(restaurant.imageUrl)" width="300" height="300" alt="Test">
+<!--    <ng-template #loading>-->
+<!--      <img src="/assets/italian.jpg" width="300" height="300" alt="Ładowanie...">-->
+<!--    </ng-template>-->
+
+
+
+    <!-- Faded overlay text -->
+    <div class="category-label">{{restaurant.foodType}}</div>
+
+    <div class="rating">
+      {{ restaurant.rating === 0 ? 'New' : (restaurant.rating % 1 === 0 ? restaurant.rating + '.0' : restaurant.rating.toFixed(1)) }}
+    </div>
+  </div>
+  <div class="card-body text-center">
+    <div class="card-title-heart">
+      <h5 class="card-title">
+        <a [routerLink]="['/restaurants', restaurant.id]" class="restaurant-link">{{ restaurant.name }}</a>
+      </h5>
+
+      <div class="heart-icon">
+        <i class="fas fa-heart" *ngIf="restaurant.rating==4.7"></i>
+        <i class="fa-regular fa-heart" *ngIf="restaurant.rating==4.5"></i>
+      </div>
+    </div>
+    <div class="status mt-2">
+      <div class="status-circle-opened" *ngIf="checkIfOpened(restaurant.openingHours)">
+        <p class="mt-3">Opened</p>
+      </div>
+      <div class="status-circle-closed" *ngIf="!checkIfOpened(restaurant.openingHours)">
+        <p class="mt-3">Closed</p>
+      </div>
+      <div class="info-circle">
+      <i class="material-icons" style="font-size: 30px;" [matTooltip]="restaurant.description" matTooltipPosition="above" matTooltipClass="tooltip">info</i>
+    </div>
+    </div>
+  </div>
+</div>

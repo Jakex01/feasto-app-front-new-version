@@ -1,0 +1,28 @@
+<div class="container-list">
+  <h2 class="title">Clients List</h2>
+  <div class="restaurant-filter">
+    <mat-form-field appearance="fill" class="filter-dropdown">
+      <mat-label>Select Restaurant</mat-label>
+      <mat-select [(ngModel)]="selectedRestaurantId" (selectionChange)="onRestaurantSelectionChange()">
+        <mat-option [value]="null">Select a Restaurant</mat-option>
+        <mat-option *ngFor="let restaurant of restaurantsList" [value]="restaurant.restaurantId">
+          {{ restaurant.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <mat-card *ngFor="let customer of customersList" class="customer-card">
+    <mat-card-header>
+      <mat-card-title>{{ customer.userEmail }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Orders Count:</strong> {{ customer.ordersCount }}</p>
+      <p><strong>Last Order:</strong> {{ customer.lastOrder | date: 'medium' }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

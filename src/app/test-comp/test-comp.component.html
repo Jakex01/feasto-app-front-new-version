@@ -1,0 +1,43 @@
+<div #modal class="modal" *ngIf="showModal1">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h2 class="modal-title">{{ customMenuItem.name }}</h2>
+
+    <fieldset class="checkbox-fieldset">
+      <legend>Size</legend>
+      <div class="modal-section">
+        <p class="modal-section-title">Choose your favorite size</p>
+        <div *ngFor="let item of customMenuItem.sizesWithPrices" class="radio-option">
+          <input type="radio" [id]="item.size" name="options" [(ngModel)]="selectedSizeKey" [value]="item.size"
+                 (change)="updateSelectedSize(item.size)">
+          <label [for]="item.size">{{ item.size }} (+ {{ item.price }} PLN)</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="checkbox-fieldset">
+      <legend>Additives</legend>
+      <div *ngFor="let additive of customMenuItem.foodAdditivePrices" class="checkbox-wrapper-42">
+        <input type="checkbox" [id]="'cbx-' + additive.foodAdditive" [(ngModel)]="selectedAdditives[additive.foodAdditive]">
+        <label class="cbx" [for]="'cbx-' + additive.foodAdditive"></label>
+        <label class="lbl" [for]="'cbx-' + additive.foodAdditive">{{ additive.foodAdditive }} (+ {{ additive.price }} PLN)</label>
+      </div>
+    </fieldset>
+
+
+    <div class="modal-footer">
+      <div class="quantity-selector">
+        <label for="quantity" class="quantity-label">Quantity:</label>
+        <select class="form-select" id="quantity" [(ngModel)]="cartItem.quantity">
+          <option value="0" selected>0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="sendOrder()">
+        Add to order • PLN • {{ calculateTotalPrice() }}
+      </button>
+    </div>
+  </div>
+</div>

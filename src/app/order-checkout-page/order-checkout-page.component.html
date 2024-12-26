@@ -1,0 +1,108 @@
+<div class="checkout-container mat-elevation-z8 mt-5">
+  <h2>Order Checkout</h2>
+  <div class="checkout-content">
+    <div class="left-column">
+      <mat-card class="cart-items">
+        <mat-card-title>Items in Cart</mat-card-title>
+        <mat-accordion multi>
+          <mat-expansion-panel *ngFor="let item of cartItem">
+            <mat-expansion-panel-header>
+              <button mat-icon-button color="warn" (click)="removeItem(item.menuItemId)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <mat-panel-title>
+                <strong>{{ item.name }}</strong>
+              </mat-panel-title>
+              <mat-panel-description>
+                {{ item.quantity }} x ${{ item.price }} = ${{ item.price * item.quantity }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="item-details">
+              <div *ngIf="item.size" class="text-muted item-size">
+                <strong>Size:</strong> {{ item.size }}
+              </div>
+              <div *ngIf="Object.keys(item.additives).length > 0" class="text-muted item-additives">
+                <strong>Additives:</strong>
+                <ul class="additive-list">
+                  <li *ngFor="let additive of item.additives | keyvalue">
+                    {{ additive.key }} - ${{ additive.value }}
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-divider></mat-divider>
+        <h3 class="total-price">Total: ${{ myPrice }}</h3>
+      </mat-card>
+      <mat-card class="purchase-location">
+        <mat-card-title>Purchase Location</mat-card-title>
+        <ul>
+          <li *ngFor="let restaurant of restaurantNames">{{ restaurant }}</li>
+        </ul>
+      </mat-card>
+    </div>
+    <div class="right-column">
+      <div class="section delivery-location">
+        <div class="section-header">
+          <h3 class="section-title">Delivery Location</h3>
+          <div class="button-group">
+            <button mat-raised-button color="primary" class="small-button" [ngClass]="{'active': selectedDeliveryType === 'PICK_UP'}" (click)="selectDeliveryType('PICK_UP')">
+              Pick Up
+            </button>
+            <button mat-raised-button color="accent" class="small-button" [ngClass]="{'active': selectedDeliveryType === 'DELIVERY'}" (click)="selectDeliveryType('DELIVERY')">
+              Delivery
+            </button>
+          </div>
+        </div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Select Location</mat-label>
+          <!-- Disable the select if "Pick Up" is selected -->
+          <mat-select [disabled]="selectedDeliveryType === 'PICK_UP'" (selectionChange)="onLocationSelect($event.value)">
+            <mat-option *ngFor="let location of userLocation" [value]="location.id">
+              {{ location.locationName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <div class="section payment-method">
+        <h3 class="section-title">Payment Method</h3>
+        <div class="payment-buttons">
+          <button mat-button color="primary" [ngClass]="{'selected': selectedPaymentMethod === 'Card'}" (click)="onPaymentMethodChange('Card')">Card</button>
+          <button mat-button color="accent" [ngClass]="{'selected': selectedPaymentMethod === 'Cash'}" (click)="onPaymentMethodChange('Cash')">Cash</button>
+        </div>
+
+        <div *ngIf="selectedPaymentMethod === 'Card'" class="currency-section">
+          <h3 class="section-title">Select Currency</h3>
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Select Currency</mat-label>
+            <mat-select [(value)]="selectedCurrency">
+              <mat-option value="USD">USD</mat-option>
+              <mat-option value="PLN">PLN</mat-option>
+              <mat-option value="EUR">EUR</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="section tip-section">
+        <h3 class="section-title">Add a Tip</h3>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Select Tip</mat-label>
+          <mat-select (selectionChange)="onTipChange($event.value)">
+            <mat-option value="0">No Tip</mat-option>
+            <mat-option value="10">10%</mat-option>
+            <mat-option value="15">15%</mat-option>
+            <mat-option value="20">20%</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" class="place-order-btn" (click)="placeOrder()">Place Order</button>
+    </div>
+
+  </div>
+</div>

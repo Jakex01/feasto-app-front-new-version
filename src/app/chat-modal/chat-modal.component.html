@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Chat for Order #{{ data.order.id }}</h2>
+<mat-dialog-content class="chat-container">
+  <div class="chat-messages">
+    <div *ngFor="let message of messages[data.order.restaurantId]" class="chat-message">
+      <p class="sender">{{ message.sender }}</p>
+      <p class="message">{{ message.content }}</p>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="message-input">
+    <mat-form-field class="input-field">
+      <input matInput [(ngModel)]="newMessage" placeholder="Type a message" />
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="sendMessage()">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+</mat-dialog-actions>

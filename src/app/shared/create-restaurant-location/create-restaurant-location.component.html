@@ -1,0 +1,64 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <form [formGroup]="locationForm" (ngSubmit)="submitLocationForm()">
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="City" formControlName="city">
+          <mat-icon matSuffix>location_city</mat-icon>
+          <mat-error *ngIf="locationForm.get('city')?.errors?.['required']">
+            City is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Street</mat-label>
+          <mat-icon matSuffix> pin_drop</mat-icon>
+          <input matInput placeholder="Street" formControlName="street">
+          <mat-error *ngIf="locationForm.get('street')?.errors?.['required']">
+            Street is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Street Number</mat-label>
+          <input matInput placeholder="Street Number" formControlName="streetNumber">
+          <mat-icon matSuffix> format_list_numbered</mat-icon>
+          <mat-error *ngIf="locationForm.get('streetNumber')?.errors?.['required']">
+            Street Number is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Country</mat-label>
+          <mat-icon matSuffix>flag</mat-icon>
+          <input matInput placeholder="Country" formControlName="country">
+          <mat-error *ngIf="locationForm.get('country')?.errors?.['required']">
+            Country is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <mat-icon matSuffix>local_post_office</mat-icon>
+          <input matInput placeholder="Postal Code (e.g., 00-000)" formControlName="postalCode">
+          <mat-error *ngIf="locationForm.get('postalCode')?.errors?.['required']">
+            Postal Code is required.
+          </mat-error>
+          <mat-error *ngIf="locationForm.get('postalCode')?.errors?.['pattern']">
+            Postal Code must be in the format XX-XXX.
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!locationForm.valid">Submit Location</button>
+        <button mat-raised-button color="accent" (click)="goBackToRestaurantForm()"><mat-icon>arrow_back</mat-icon></button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

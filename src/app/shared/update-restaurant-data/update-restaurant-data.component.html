@@ -1,0 +1,128 @@
+<div class="manage-container">
+<mat-form-field appearance="fill" class="choose-restaurant">
+  <mat-label>Choose a Restaurant</mat-label>
+  <mat-select [(value)]="selectedRestaurant" (selectionChange)="onRestaurantChange()">
+    <mat-option *ngFor="let restaurant of restaurants" [value]="restaurant">
+      {{ restaurant.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<form [formGroup]="restaurantForm" class="restaurant-form">
+
+
+  <mat-card class="details-card">
+
+    <mat-card-title class="restaurant-details">Restaurant Details</mat-card-title>
+    <div fxLayout="column" fxLayoutGap="15px">
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Restaurant Name</mat-label>
+          <input matInput formControlName="name" [disabled]="!editableFields.name">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('name')" *ngIf="!editableFields.name" class="fix-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description" [disabled]="!editableFields.description">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('description')" *ngIf="!editableFields.description" class="fix-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber" [disabled]="!editableFields.phoneNumber">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('phoneNumber')" *ngIf="!editableFields.phoneNumber" class="fix-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Opening Hours</mat-label>
+          <input matInput formControlName="openingHours" [disabled]="!editableFields.openingHours">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('openingHours')" *ngIf="!editableFields.openingHours" class="fix-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Food Type</mat-label>
+          <input matInput formControlName="foodType" [disabled]="!editableFields.foodType">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('foodType')" *ngIf="!editableFields.foodType" class="fix-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+
+  </mat-card>
+
+  <mat-card class="details-card">
+    <mat-card-title class="restaurant-details">Address</mat-card-title>
+    <div fxLayout="column" fxLayoutGap="15px">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" [disabled]="!editableFields.city">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('city')" *ngIf="!editableFields.city">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Street</mat-label>
+          <input matInput formControlName="street" [disabled]="!editableFields.street">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('street')" *ngIf="!editableFields.street">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Street Number</mat-label>
+          <input matInput formControlName="streetNumber" [disabled]="!editableFields.streetNumber">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('streetNumber')" *ngIf="!editableFields.streetNumber">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName="country" [disabled]="!editableFields.country">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('country')" *ngIf="!editableFields.country">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="input-container">
+        <mat-form-field appearance="fill" fxFlex="1" class="manage-input">
+          <mat-label>Postal Code</mat-label>
+          <input matInput formControlName="postalCode" [disabled]="!editableFields.postalCode">
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="toggleFieldEdit('postalCode')" *ngIf="!editableFields.postalCode">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+  <button mat-raised-button color="primary" (click)="saveRestaurant()" class="save-button">Save Changes</button>
+
+</form>
+</div>

@@ -1,0 +1,13 @@
+<div class="filter-container">
+  <div *ngFor="let filter of filters">
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>{{ filter.label }}</mat-label>
+      <mat-select [(ngModel)]="filter.selectedValue" (selectionChange)="onFilterChange()" name="{{ filter.name }}">
+        <mat-option *ngIf="filter.placeholder" [value]="null" disabled>{{ filter.placeholder }}</mat-option>
+        <mat-option *ngFor="let option of filter.options" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

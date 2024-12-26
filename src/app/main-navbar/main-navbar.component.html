@@ -1,0 +1,192 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+
+    <button class="btn btn-lg custom-large-btn " type="button" (click)="parentToChildAcc()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <a class="navbar-brand" href="/main">Feasto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/restaurants">Restaurants</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/orders">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/messages">Chat</a>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-primary position-relative" type="button" (click)="logOut()">Log out</button>
+        </li>
+      </ul>
+      <button class="btn btn-outline-secondary ms-3" type="button" data-bs-toggle="modal" data-bs-target="#pickupDetailsModal">
+        <i class="fas fa-map-marker-alt"></i>
+        {{ currentLocation ? currentLocation : 'Location not selected' }}
+        •
+        {{
+          (selectedDate && selectedDate.trim() !== '' && selectedHour && selectedHour.trim() !== '')
+            ? (selectedDate + ', ' + selectedHour)
+            : displayDeliveryTime
+        }}
+      </button>
+    </div>
+  </div>
+  <div class="navbar-cart ms-auto">
+    <button class="btn btn-warning position-relative" type="button" (click)="parentToChild()">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{number_of_items || 0}}
+        <span class="visually-hidden">unread messages</span>
+      </span>
+    </button>
+  </div>
+</nav>
+<app-off-canvas-cart></app-off-canvas-cart>
+<app-off-canvas-account-management></app-off-canvas-account-management>
+<div class="modal " id="pickupDetailsModal" tabindex="-1" aria-labelledby="pickupDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5 class="modal-title" id="pickupDetailsModalLabel">Pick-up details</h5>
+        <div class="location-details mt-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>
+              <i class="fas fa-map-marker-alt"></i>
+              {{ selectedDeliveryStreetName || locationItem.street + ' ' + locationItem.streetNumber + ', ' + locationItem.city }}
+            </span>
+            <button class="btn btn-change"  data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close" data-bs-target="#deliveryModal">Change</button>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span>
+              <i class="fas fa-calendar-alt"></i>
+              Tue, 23 Apr, 19:30
+            </span>
+            <button class="btn btn-schedule" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close" data-bs-target="#scheduleModal">Schedule</button>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-finished" data-bs-dismiss="modal" aria-label="Close">Finished</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal " id="deliveryModal" tabindex="-1" aria-labelledby="deliveryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content custom-modal-content">
+      <div class="modal-header custom-modal-header">
+        <h5 class="modal-title" id="deliveryModalLabel">Delivery Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body custom-modal-body">
+        <form>
+          <!-- Postal Code Input -->
+          <div class="input-group custom-input-group">
+            <input type="text" class="form-control custom-form-control" id="postalCode" placeholder="00-___"
+                   [(ngModel)]="selectedPostalCode" name="postalCode"
+                   (keyup)="formatPostalCode($event)" required>
+          </div>
+
+          <div class="input-group custom-input-group">
+            <input type="text" class="form-control custom-form-control" id="city" placeholder="e.g. Warsaw" name="city"
+                   [(ngModel)]="city">
+          </div>
+
+
+          <div class="input-group custom-input-group">
+            <input type="text" class="form-control custom-form-control" id="streetName" placeholder="e.g., Warszawska 8"
+                   [(ngModel)]="selectedDeliveryStreetName" name="streetName">
+          </div>
+
+          <div class="input-group custom-input-group">
+            <input type="text" class="form-control custom-form-control" id="locationName" placeholder="My Born city loc." name="locationName"
+                   [(ngModel)]="selectedLocationName">
+          </div>
+
+          <div class="d-flex d-flex justify-content-end mb-3 mt-3">
+            <button type="button" class="btn custom-btn-primary" (click)="saveLocation()">
+              Save Location
+            </button>
+          </div>
+
+        </form>
+        <div class="user-locations-list">
+          <h6>Previous Locations:</h6>
+          <div *ngFor="let location of locations" class="mb-2">
+            <button type="button" class="btn btn-location w-100 text-start d-flex justify-content-between align-items-center" (click)="selectLocation(location)">
+      <span>
+        <i class="fas fa-map-marker-alt me-2"></i>
+        {{ location.street }}, {{ location.city }} - {{ location.postalCode }}
+      </span>
+              <i *ngIf="location.current" class="fas fa-check"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn custom-btn-secondary" data-bs-dismiss="modal" aria-label="Close" data-bs-target="#pickupDetailsModal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Schedule Modal -->
+<div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scheduleModalLabel">Select a Date</h5>
+        <button type="button" class="btn-close btn-close-black text-reset" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <!-- Date Carousel Template -->
+        <div id="dateCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let slide of dates; let isActive = first" class="carousel-item" [class.active]="isActive">
+              <div class="d-flex justify-content-center">
+                <div *ngFor="let date of slide" class="date-item" (click)="selectDate(date.date)" [class.selected]="isSelectedDate(date.date)">
+                  <span class="day">{{ date.day }}</span>
+                  <span class="date">{{ date.date }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#dateCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#dateCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <div class="hours-list mt-3" style="height: 160px; overflow-y: auto;">
+          <button *ngFor="let slot of timeSlots" type="button" class="btn btn-outline-secondary w-100 mb-2 d-flex justify-content-between align-items-center"
+                  (click)="selectHour(slot.time)" [class.selected]="isSelectedHour(slot.time)">
+            <span class="time-text">{{ slot.time }}</span>
+            <i class="fas fa-check" *ngIf="isSelectedHour(slot.time)"></i>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveDate()">Save Date</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

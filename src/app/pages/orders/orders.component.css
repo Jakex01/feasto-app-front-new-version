@@ -1,0 +1,252 @@
+
+.tabs button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #f8f9fa;
+  color: #495057;
+  border-bottom: 3px solid transparent;
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-bottom 0.3s;
+}
+
+.tabs button.active {
+  border-bottom: 3px solid #007bff;
+  background-color: #ffffff;
+  color: #007bff;
+}
+
+.tabs button:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.card {
+  border: 1px solid #d6d8db;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Arial', sans-serif;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: #f0f4f8;
+  font-size: 1.2rem;
+  color: #495057;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.progress {
+  height: 20px;
+  border-radius: 10px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 10px;
+  color: white;
+}
+
+.progress-bar.bg-success {
+  background-color: #28a745;
+}
+
+.progress-bar.bg-warning {
+  background-color: #ffc107;
+}
+
+.progress-bar.bg-info {
+  background-color: #17a2b8;
+}
+
+.progress-bar.bg-primary {
+  background-color: #007bff;
+}
+
+.list-group-item {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:nth-child(even) {
+  background-color: #f1f3f5;
+}
+
+.list-group-item h6 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.list-group-item p {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef;
+}
+
+.info-block {
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  border: 1px solid #cce5ff;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.info-box {
+  flex: 1;
+  text-align: center;
+  margin: 5px;
+}
+
+.info-box p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+}
+
+.info-box strong {
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+.quantity-badge {
+  display: inline-block;
+  min-width: 30px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #007bff;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.fadeSlideInOut {
+  display: block;
+  animation: fadeSlideInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeSlideInOut {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-items-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.modal-content {
+  border: none;
+  overflow: hidden;
+}
+
+.modal-header {
+  background: linear-gradient(90deg, #0056b3, #007bff);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  letter-spacing: 0.05rem;
+}
+
+.form-select, .form-control {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.form-select:focus, .form-control:focus {
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #0056b3, #007bff);
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #004085, #0056b3);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-secondary {
+  border: 1px solid #ced4da;
+  color: #495057;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  border-color: #495057;
+  color: #212529;
+}
+
+.rounded-4 {
+  border-radius: 1rem;
+}
+
+.bg-success {
+  color: white;
+  background-color: green;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.bg-danger {
+  color: white;
+  background-color: red;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+

@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="filter-panel">
+    <mat-form-field appearance="fill" class="input-with-margin">
+      <mat-label>Restaurant Name</mat-label>
+      <input matInput placeholder="Enter restaurant name" [(ngModel)]="mappedFilter.restaurantName" (input)="search(mappedFilter.restaurantName)" required>
+      <mat-error *ngIf="!restaurantName">Restaurant name is required</mat-error>
+    </mat-form-field>
+    <app-filter-panel
+      [filters]="filterOptions"
+      (filterChanged)="handleFilterChanges($event)">
+    </app-filter-panel>
+  </div>
+  <div class="delete-button-style">
+    <button mat-fab color="primary" class="delete-btn" (click)="handleFilterChanges({ onlyLiked: !mappedFilter.onlyLiked })">
+      <mat-icon>{{ mappedFilter.onlyLiked ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+    <button mat-fab color="primary" class="delete-btn" (click)="onResetFiltersClick()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <div class="header-flex">
+    <h2 class="restaurants-header">Restaurants</h2>
+  </div>
+  <p class="mb-5 number-of-results">Number of results: {{numberOfResults}}</p>
+  <div class="row">
+    <div class="col-md-3" *ngFor="let restaurant of restaurants">
+      <app-restaurant-card [restaurant]="restaurant"></app-restaurant-card>
+    </div>
+  </div>
+  <mat-paginator [length]="totalElements"
+                 [pageSize]="pageSize"
+                 [pageIndex]="pageIndex"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+

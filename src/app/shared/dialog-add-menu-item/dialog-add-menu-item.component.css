@@ -1,0 +1,54 @@
+/* Dialog overall styling */
+.custom-dialog-container {
+  color: #333; /* Basic text color - adjust as needed */
+  min-width: 300px;
+  max-width: 600px;
+  font-family: Arial, sans-serif;
+}
+
+/* Dialog title styling */
+.custom-dialog-title {
+  color: #1976d2; /* Material Blue 700 */
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+/* Dialog content styling */
+.custom-dialog-content {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #666; /* Darker grey for text */
+}
+
+/* Dialog actions styling */
+.custom-dialog-actions {
+  border-top: 1px solid #ddd; /* Light grey border for the action buttons area */
+  padding: 12px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Styling for the buttons */
+.dialog-button {
+  min-width: 90px;
+  margin-left: 10px;
+  background-color: #1976d2; /* Material Blue 700 */
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.dialog-button:hover {
+  background-color: #1565c0; /* A darker shade for hover state */
+}
+
+.dialog-button.no-button {
+  background-color: transparent;
+  color: #1976d2;
+}
+
+.dialog-button.no-button:hover {
+  background-color: rgba(25, 118, 210, 0.1);
+}

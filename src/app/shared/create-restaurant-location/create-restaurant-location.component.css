@@ -1,0 +1,48 @@
+/* Center the card */
+mat-card {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.3s ease;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-form-field, p {
+  margin-bottom: 1rem;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+mat-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+mat-icon {
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}

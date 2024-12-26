@@ -1,0 +1,68 @@
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasScrollingLabel" #modalManagement>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title mat-title" id="offcanvasScrollingLabel">Your account</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body mat-body">
+    <mat-list class="user-profile">
+      <mat-list-item>
+        <div>
+          <p class="user-role">Role: {{ isManager ? 'MANAGER' : 'USER' }}</p>
+        </div>
+      </mat-list-item>
+    </mat-list>
+
+    <!-- Links Section -->
+    <mat-divider></mat-divider>
+    <h5 class="section-title">Options</h5>
+    <mat-list>
+      <mat-list-item class="nav-item">
+        <a href="#" class="nav-link" [class.disabled]="!isManager">
+          <mat-icon class="nav-icon">restaurant</mat-icon>
+          Restaurants
+        </a>
+      </mat-list-item>
+      <mat-list-item class="nav-item">
+        <a href="/stats" class="nav-link" [class.disabled]="!isManager">
+          <mat-icon class="nav-icon">bar_chart</mat-icon>
+          Statistics
+        </a>
+      </mat-list-item>
+      <mat-list-item class="nav-item">
+        <a href="/add-restaurant" class="nav-link" [class.disabled]="!isManager">
+          <mat-icon class="nav-icon">add</mat-icon>
+          Add Restaurant
+        </a>
+      </mat-list-item>
+      <mat-list-item class="nav-item">
+        <a href="/orders-restaurant" class="nav-link" [class.disabled]="!isManager">
+          <mat-icon class="nav-icon">receipt_long</mat-icon>
+          Orders
+        </a>
+      </mat-list-item>
+      <mat-list-item class="nav-item">
+        <a href="/customers-list" class="nav-link" [class.disabled]="!isManager">
+          <mat-icon class="nav-icon">people</mat-icon>
+          Clients List
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+    <!-- Footer Section -->
+    <mat-divider></mat-divider>
+    <h5 class="section-title">Dodatkowe Opcje</h5>
+    <mat-list>
+      <mat-list-item>
+        <a href="#" class="footer-link" [class.disabled]="!isManager">
+          <mat-icon class="footer-icon">add_business</mat-icon>
+          Utwórz konto firmowe
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+    <!-- Logout Button -->
+    <div class="logout-section">
+      <button type="button" class="logout-btn">Log out</button>
+    </div>
+  </div>
+</div>

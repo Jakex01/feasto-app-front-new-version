@@ -1,0 +1,53 @@
+<div class="restaurant-info-card">
+  <div class="restaurant-description">
+    {{ restaurant.description }}
+  </div>
+
+  <div class="restaurant-rating-section">
+    <ng-container *ngFor="let star of stars">
+      <i class="material-icons rating-star">{{ star }}</i>
+    </ng-container>
+    <div class="rating-details">
+      <span class="rating-value">
+        {{ restaurant.rating % 1 === 0 ? ('(' + restaurant.rating + '.0)') : '(' + restaurant.rating.toFixed(2) + ')' }}
+      </span>
+      <i class="bi bi-dot rating-separator"></i>
+      <a href="#" class="opinion-link" data-bs-toggle="modal" data-bs-target="#commentsModal" (click)="fetchAllComments()">
+        {{ restaurant.commentsCount }} opinions
+      </a>
+    </div>
+    <i class="bi bi-dot rating-separator"></i>
+    <button class="add-comment-btn" (click)="toggleCommentVisibility()">
+      <i class="material-icons add-comment-icon">add_circle_outline</i>
+    </button>
+  </div>
+
+  <div *ngIf="isCommentVisible" class="comment-section">
+    <p>
+      ({{ ratingResponse.rating }}) <strong>Average comment:</strong> {{ ratingResponse.review }}
+      <br>
+    </p>
+    <div class="comment-date">
+      {{ checkingRatingCreateDate(ratingResponse.createDate) }}
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="commentsModal" tabindex="-1" aria-labelledby="commentsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentsModalLabel">Comments</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let comment of CommentsByRestaurant">
+          <p>Rating: {{ comment.rating }}</p>
+          <p>Review: {{ comment.review }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

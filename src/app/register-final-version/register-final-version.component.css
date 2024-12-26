@@ -1,0 +1,45 @@
+/* login.component.css */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.login-pass {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+
+.social-login {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #4267B2;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  width: 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.social-button i {
+  font-size: 1.25rem;
+}
+.sign-up-button {
+  margin-left: auto;
+  /* Add styles for the Sign Up button */
+}

@@ -1,0 +1,42 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" data-bs-backdrop="true" aria-labelledby="offcanvasCartLabel" #modal>
+  <div class="cart-header">
+    <h5 id="offcanvasCartLabel">Your Cart</h5>
+    <button type="button" class="btn-close btn-close-black text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="cart-body">
+    <!-- Grouped by restaurant -->
+    <div *ngFor="let group of groupedCartItems">
+      <div class="restaurant-header">
+        <hr class="restaurant-separator">
+        <h5>Restaurant: {{ group.restaurantName }}</h5>
+        <hr class="restaurant-separator">
+      </div>
+
+      <!-- List items for this restaurant -->
+      <div *ngFor="let item of group.items" class="cart-item">
+        <div class="item-name">{{ item.name }}</div>
+        <hr class="item-divider">
+        <ul class="item-options additives">
+          <li class="option-title">Additives:</li>
+          <li *ngFor="let additive of getFoodAdditiveArray(item.additives)" class="additive-detail">
+            {{ additive.key }} - PLN {{ additive.value }}
+          </li>
+        </ul>
+        <ul class="item-options size-price">
+          <li class="option-title">Size:</li>
+          <li>{{ item.size }} - PLN {{ item.price }}</li>
+        </ul>
+        <hr class="item-divider">
+        <div class="item-quantity">Quantity: {{ item.quantity }}</div>
+        <div class="item-total-price">PLN {{ ((item.price +getAdditivesPrice(item.additives)) * item.quantity) }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="total-price">
+      Total Price: {{ myPrice }} $$
+    </div>
+    <button class="btn-checkout" data-bs-dismiss="offcanvas" (click)="navigateToOrderSubmit()">Go to Checkout</button>
+    <button class="btn-add-items" data-bs-dismiss="offcanvas" (click)="navigateToAddItem()">Add More Items</button>
+  </div>
+</div>

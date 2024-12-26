@@ -1,0 +1,117 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <form [formGroup]="menuItemForm" (ngSubmit)="submitMenuItemForm()">
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Menu Item Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name">
+          <mat-icon matSuffix> fastfood</mat-icon>
+          <mat-error *ngIf="menuItemForm.get('name')?.errors?.['required']">
+            Menu Item name is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Description" formControlName="description">
+          <mat-icon matSuffix>description</mat-icon>
+          <mat-error *ngIf="menuItemForm.get('description')?.errors?.['required']">
+            Description is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Available</mat-label>
+          <mat-select formControlName="available">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+          <mat-error *ngIf="menuItemForm.get('available')?.errors?.['required']">
+            Please select availability.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Food Category</mat-label>
+          <mat-select formControlName="foodCategory">
+            <mat-option *ngFor="let category of foodCategories" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="menuItemForm.get('foodCategory')?.errors?.['required']">
+            Food category is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <div formArrayName="sizes">
+        <div *ngFor="let size of sizes.controls; let i=index" [formGroupName]="i" class="form-group-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Size</mat-label>
+            <input matInput placeholder="Size (e.g., Small, Medium, Large)" formControlName="size">
+            <mat-error *ngIf="size.get('size')?.errors?.['required']">
+              Size is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" formControlName="price" type="number" min="0">
+            <mat-error *ngIf="size.get('price')?.errors?.['required']">
+              Price is required.
+            </mat-error>
+            <mat-error *ngIf="size.get('price')?.errors?.['min']">
+              Price cannot be less than 0.
+            </mat-error>
+          </mat-form-field>
+
+
+
+          <button mat-icon-button color="warn" (click)="removeSize(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <p>
+        <button mat-raised-button color="primary" (click)="addSize()">Add Size</button>
+      </p>
+      <div formArrayName="additives">
+        <div *ngFor="let additive of additives.controls; let i=index" [formGroupName]="i" class="form-group-container">
+          <mat-form-field appearance="fill">
+            <mat-label>Additive Name</mat-label>
+            <input matInput placeholder="Name (e.g., Cheese, Sauce)" formControlName="name">
+            <mat-error *ngIf="additive.get('name')?.errors?.['required']">
+              Additive name is required.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" formControlName="price" type="number" min="0">
+            <mat-error *ngIf="additive.get('price')?.errors?.['required']">
+              Price is required.
+            </mat-error>
+            <mat-error *ngIf="additive.get('price')?.errors?.['min']">
+              Price cannot be less than 0.
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-icon-button color="warn" (click)="removeAdditive(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <p>
+        <button mat-raised-button color="primary" (click)="addAdditive()">Add Additive</button>
+      </p>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit"
+                (click)="openDialog('500ms', '500ms')" [disabled]="!menuItemForm.valid">
+          Submit Menu Item
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

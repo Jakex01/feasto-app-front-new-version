@@ -1,0 +1,62 @@
+<mat-tab-group>
+  <mat-tab label="Statistics">
+
+    <div class="restaurant-select-container">
+      <mat-form-field appearance="outline" class="restaurant-select">
+        <mat-label>Select Restaurant</mat-label>
+        <mat-select [(ngModel)]="selectedRestaurantId" (selectionChange)="onRestaurantChange()">
+          <mat-option *ngFor="let restaurant of userRestaurants" [value]="restaurant.restaurantId">
+            {{ restaurant.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-slide-toggle
+      [(ngModel)]="isChartVisible"
+      class="custom-slide-toggle"
+      [disabled]="!selectedRestaurantId"
+      (change)="onToggleChange($event.checked); updateChart()"
+    >
+      Financial chart
+    </mat-slide-toggle>
+
+    <div class="filters" *ngIf="isChartVisible">
+      <mat-form-field appearance="outline" class="date-picker-first">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (ngModelChange)="updateChart()">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="date-picker-second">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (ngModelChange)="updateChart()">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="chart-type-select">
+        <mat-label>Chart Type</mat-label>
+        <mat-select [(ngModel)]="selectedChartType" (selectionChange)="onChartTypeChange(); updateChart()">
+          <mat-option value="amount_of_money">Amount of Money</mat-option>
+          <mat-option value="average_finish_time">Average Finish Time</mat-option>
+          <mat-option value="order_count">Order Count</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="chart-container" *ngIf="isChartVisible">
+      <canvas baseChart [data]="chartData" [options]="chartOptions" [type]="chartType"></canvas>
+    </div>
+
+
+  </mat-tab>
+
+  <mat-tab label="Manage">
+    <app-update-restaurant-data></app-update-restaurant-data>
+    <app-restaurant-items-list-admin></app-restaurant-items-list-admin>
+  </mat-tab>
+
+</mat-tab-group>
+

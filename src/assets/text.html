@@ -1,0 +1,60 @@
+
+<div #modal class="modal" *ngIf="showModal1">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h2 class="modal-title">{{customMenuItem.name}}</h2>
+
+    <fieldset class="checkbox-fieldset">
+      <legend>Size</legend>
+      <div class="modal-section">
+        <p class="modal-section-title">Choose your favorite size</p>
+        <div *ngFor="let item of customMenuItem.sizesWithPrices | objectToArray" class="radio-option">
+          <input type="radio" [id]="item.key" name="options" [(ngModel)]="selectedSizeKey" [value]="item.key"
+                 (change)="updateSelectedSize(item.key)">
+          <label [for]="item.key">{{ item.key }} (+ {{ item.value }} PLN)</label>
+        </div>
+
+      </div>
+
+
+    </fieldset>
+
+
+    <fieldset class="checkbox-fieldset">
+      <legend>Additive</legend>
+      <div *ngFor="let additive of customMenuItem.foodAdditivePrices | objectToArray" class="checkbox-wrapper-42">
+        <input type="checkbox" [id]="'cbx-' + additive.key"
+               [(ngModel)]="selectedAdditives[additive.key]">
+        <label class="cbx" [for]="'cbx-' + additive.key"></label>
+        <label class="lbl" [for]="'cbx-' + additive.key">{{ additive.key }} (+ {{ additive.value }} PLN)</label>
+      </div>
+    </fieldset>
+
+
+
+
+
+
+
+    <div class="modal-section">
+      <p class="modal-section-title">Special instructions</p>
+      <textarea class="form-control" placeholder="Add a note" [(ngModel)]="menuItemOrder.note"></textarea>
+    </div>
+
+
+    <div class="modal-footer">
+      <div class="quantity-selector">
+        <label for="quantity" class="quantity-label">Quantity:</label>
+        <select class="form-select" id="quantity" [(ngModel)]="menuItemOrder.quantity">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary">Add {{ selectedQuantity }} to order • PLN {{calculateTotalPrice()*menuItemOrder.quantity}}</button>
+    </div>
+  </div>
+</div>
+
+
+

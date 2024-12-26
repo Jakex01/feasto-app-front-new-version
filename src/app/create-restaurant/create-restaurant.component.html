@@ -1,0 +1,21 @@
+<app-create-restaurant-card *ngIf="isRestaurantFormVisible"
+                            (onSubmitForm)="handleRestaurantFormSubmit($event)"
+                            (imageSelected)="handleImageSelected($event)"
+>
+</app-create-restaurant-card>
+
+<app-create-restaurant-location *ngIf="isLocationFormVisible"
+                                (onSubmitForm)="handleLocationFormSubmit($event)"
+                                (requestToShowRestaurantInfo)="handleBackToRestaurantInfo()">
+
+</app-create-restaurant-location>
+
+<app-create-restaurant-menu-item *ngIf="isMenuItemFormVisible"
+                                 (menuItemSubmitted)="handleMenuItemsFormSubmit($event)"
+                                 (menuItemFinished)="handleMenuItemsFinished($event)"
+></app-create-restaurant-menu-item>
+
+<app-submit-restaurant *ngIf="submitRestaurantPageVisible" [restaurantData]="restaurantData" [selectedImage]="selectedImage"></app-submit-restaurant>
+
+
+

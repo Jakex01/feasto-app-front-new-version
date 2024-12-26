@@ -1,0 +1,33 @@
+mat-card {
+  max-width: 800px;
+  margin: 6rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.3s ease;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.time-fields-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+mat-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.time-field {
+  flex: 1;
+  margin: 0 8px;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}

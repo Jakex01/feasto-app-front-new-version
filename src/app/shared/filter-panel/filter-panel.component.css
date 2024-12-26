@@ -1,0 +1,20 @@
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filter-field {
+  flex: 1;
+  min-width: 200px;
+}
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column; /* Ustawienie elementów jeden pod drugim */
+  }
+
+  .filter-field {
+    width: 100%; /* Pełna szerokość */
+    flex-basis: 100%; /* Dostosowanie flex-basis do pełnej szerokości */
+  }
+}

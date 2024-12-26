@@ -1,0 +1,94 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Restaurant name</mat-label>
+          <input matInput placeholder="Feasto" formControlName="restaurantName">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error *ngIf="form.get('restaurantName')?.errors?.['required']">
+            Restaurant name is required.
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <input matInput placeholder="Delicious food" formControlName="description">
+          <mat-icon matSuffix>fastfood</mat-icon>
+          <mat-error *ngIf="form.get('description')?.errors?.['required']">
+            Description is required.
+          </mat-error>
+          <mat-error *ngIf="form.get('description')?.errors?.['maxlength']">
+            Description cannot be more than 70 characters.
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <!-- New Phone Number Field -->
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Phone Number</mat-label>
+          <input matInput placeholder="+1234567890" formControlName="phoneNumber">
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="form.get('phoneNumber')?.errors?.['required']">
+            Phone number is required.
+          </mat-error>
+          <mat-error *ngIf="form.get('phoneNumber')?.errors?.['pattern']">
+            Please enter a valid phone number.
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Food Type</mat-label>
+          <mat-select formControlName="foodTypeControl" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let foodType of foodTypes" [value]="foodType.name">{{foodType.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('foodTypeControl')?.hasError('required')">
+            Please choose the food type
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <div class="time-fields-container">
+        <p class="time-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Each Day Opening Time</mat-label>
+            <input matInput type="time" formControlName="Opening">
+            <mat-error *ngIf="form.get('Opening')?.errors?.['required']">
+              Opening time is required.
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p class="time-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Each Day Closing Time</mat-label>
+            <input matInput type="time" formControlName="Closing">
+            <mat-error *ngIf="form.get('Closing')?.errors?.['required']">
+              Closing time is required.
+            </mat-error>
+            <mat-error *ngIf="form.errors?.['timeInvalid']">
+              Closing time must be later than opening time.
+            </mat-error>
+          </mat-form-field>
+        </p>
+      </div>
+      <div>
+        <label for="fileUpload">Upload Image</label>
+        <input
+          id="fileUpload"
+          type="file"
+          accept="image/jpeg, image/png"
+          (change)="onFileSelect($event)"
+        />
+        <div *ngIf="fileError" class="text-danger mt-2">{{ fileError }}</div>
+        <img *ngIf="selectedImage" [src]="selectedImage" alt="Preview" class="img-thumbnail mt-3" style="max-width: 200px;" />
+      </div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

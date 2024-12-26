@@ -1,0 +1,100 @@
+
+
+import {Component, OnInit} from '@angular/core';
+import {RestaurantService} from "../service/restaurant-service/restaurant.service";
+import {RestaurantDtoModel} from "../model/RestaurantDtoModel";
+import {FilterConfig} from "../shared/filter-panel/filter-panel.component";
+import {FilterService} from "../service/shared/filter.service";
+import {PageEvent} from "@angular/material/paginator";
+import {debounceTime, distinctUntilChanged, map, of, Subject, switchMap} from 'rxjs';
+import {FilterOption} from "../model/request/FilterOption";
+
+interface SearchData {
+  filters: FilterOption;
+}
+
+@Component({
+  selector: 'app-restaurants-list',
+  templateUrl: './restaurants-list.component.html',
+  styleUrls: ['./restaurants-list.component.css']
+})
+
+export class RestaurantsListComponent implements OnInit{
+
+  mappedFilter: FilterOption = {
+    restaurantName: "",
+    foodType: "",
+    rating: 0,
+    priceRange: 0,
+    sort: ""
+  };
+  restaurantName: string = "";
+  numberOfResults: number;
+  filterOptions: FilterConfig[];
+  pageSize: number = 10;
+  pageIndex: number = 0;
+  restaurants: RestaurantDtoModel[] = [];
+  private searchTerms = new Subject<SearchData>();
+
+  constructor(private restaurantService: RestaurantService,
+              private filterService: FilterService) {
+  }
+  ngOnInit(): void {
+    this.filterOptions = this.filterService.getFilterOptions();
+    this.loadRestaurants();
+
+    this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
+      switchMap(({  filters }) =>
+        this.shouldLoadAllRestaurants(this.mappedFilter.restaurantName, filters) ?
+          this.restaurantService.getAllRestaurants(this.pageIndex, this.pageSize) :
+          this.restaurantService.searchRestaurantsByName(this.mappedFilter)
+      ),
+      map(results => Array.isArray(results) ? results : [])
+    ).subscribe(results => {
+      this.restaurants = results;
+      this.numberOfResults = results.length;
+    });
+  }
+
+  search(term: string): void {
+    this.mappedFilter.restaurantName = term;
+    this.searchTerms.next({
+      filters: this.mappedFilter
+    });
+  }
+
+  loadRestaurants(): void {
+    this.restaurantService.getAllRestaurants(this.pageIndex, this.pageSize)
+      .subscribe((data: any) => {
+        this.restaurants = data;
+        this.numberOfResults = data.length;
+      });
+  }
+
+  onPageChange(event: PageEvent): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadRestaurants();
+  }
+
+  handleFilterChanges(filters: { [key: string]: any }): void {
+    this.mappedFilter = {
+      restaurantName: this.mappedFilter.restaurantName || '',
+      foodType: filters['foodType'] || '',
+      rating: filters['rating'] || 0,
+      priceRange: filters['priceRange'] || '',
+      sort: filters['sort'] || ''
+    };
+    this.searchTerms.next({
+      filters: this.mappedFilter
+    });
+  }
+  onResetFiltersClick(): void {
+    this.filterService.resetFilters();
+  }
+  private shouldLoadAllRestaurants(term: string, filters: any): boolean {
+    return term === "" && filters.foodType === "" && filters.rating === 0 && filters.priceRange === 0;
+  }
+}

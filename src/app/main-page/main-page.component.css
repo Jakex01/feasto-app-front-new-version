@@ -1,0 +1,167 @@
+/* Ograniczenie szerokości karuzeli i centrowanie */
+.carousel.slide {
+  margin-top: 20px; /* Odstęp od góry */
+  width: 100%; /* Karuzela zajmuje 75% szerokości */
+  margin-left: auto; /* Wyśrodkowanie w poziomie: lewy margines */
+  margin-right: auto; /* Wyśrodkowanie w poziomie: prawy margines */
+  border-radius: 15px; /* Zaokrąglenie karuzeli */
+  overflow: hidden; /* Zapobieganie wyświetlaniu się zawartości poza zaokrąglonymi krawędziami */
+}
+
+/* Dostosowanie wysokości karuzeli */
+.carousel-item {
+  height: 40vh; /* Zmniejszona wysokość karuzeli */
+  min-height: 200px; /* Zmniejszona minimalna wysokość */
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Styl dla obrazków w karuzeli */
+.carousel-item img {
+  width: 100%; /* Szerokość obrazu dopasowana do kontenera karuzeli */
+  object-fit: cover; /* Zapewnienie, że obrazy będą ładnie wyglądać */
+  border-radius: 15px; /* Zaokrąglenie obrazków w karuzeli */
+}
+
+/* Styl dla opisu w karuzeli */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Styl dla kontrolerów karuzeli */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .carousel.slide {
+    width: 90%; /* Większa szerokość karuzeli dla mniejszych urządzeń */
+  }
+
+  .carousel-item {
+    height: 25vh; /* Jeszcze mniejsza wysokość dla ekranów mobilnych */
+    min-height: 150px; /* Zmniejszona minimalna wysokość dla ekranów mobilnych */
+  }
+}
+
+
+/* recommended by app */
+
+.card {
+  background: none;
+  overflow: hidden; /* Zapobiega wystawaniu obrazu poza kartę */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lekki cień dla karty */
+  transition: transform 0.3s ease-in-out; /* Animacja dla efektu najechania */
+  position: relative; /* Umożliwia wyświetlenie obrazu nad krawędzią karty */
+  margin-bottom: 30px; /* Odstęp pomiędzy kartami */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Unoszenie karty przy najechaniu */
+}
+
+.card .card-img-top {
+  width: 70%; /* Zmniejszenie szerokości obrazu */
+  border: 5px solid white; /* Biała obramówka dookoła obrazu */
+}
+
+.card .card-body {
+  padding-top: 15px; /* Odstęp od górnego brzegu karty do treści */
+}
+.card-title {
+  background-color: #FFC107; /* Podobny kolor tła jak na obrazku */
+  display: inline-block; /* Umożliwia zastosowanie paddingu i border-radius */
+  padding: 0.3em 0.6em; /* Dostosuj w zależności od potrzeb */
+  border-radius: 20px; /* Zaokrąglenie rogów */
+  color: #000; /* Kolor tekstu */
+  font-family: 'Arial', sans-serif; /* Podobna, ogólnie dostępna czcionka */
+  font-weight: bold; /* Pogrubienie tekstu */
+  margin-top: -40px; /* Wyrównanie do góry, jeśli to konieczne */
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2); /* Lekki cień dla efektu głębi */
+}
+
+
+@media (max-width: 768px) {
+  .card .card-img-top {
+    width: 50%;
+    margin-top: -10px;
+  }
+
+  .card .card-body {
+    padding-top: 30px; /* Mniejszy odstęp od góry dla treści karty */
+  }
+}
+.icon-large {
+  font-size: 48px; /* Zwiększa rozmiar ikony */
+}
+.scroll-down-btn {
+  margin-top: -20px; /* Zmniejszenie odstępu między kartami a przyciskiem */
+}
+.next-section {
+  padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #FFC107;
+}
+
+.feature-cards .feature-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.feature-card h3 {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 1rem;
+}
+
+.feature-card::after {
+  content: attr(data-hover);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #FFC107;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: none;
+  font-size: 0.9rem;
+}
+
+.feature-card:hover::after {
+  display: block;
+}

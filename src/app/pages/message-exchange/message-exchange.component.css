@@ -1,0 +1,89 @@
+.chat-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-select {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.messages-container {
+  margin-top: 20px;
+}
+
+.messages-list {
+  max-height: 300px; /* Adjust height to fit approximately 4 messages */
+  overflow-y: auto; /* Enable vertical scrolling when content exceeds height */
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.message-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.customer {
+  background-color: #e3f2fd;
+  text-align: right;
+}
+
+.restaurant {
+  background-color: #fff8e1;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.message-content {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.message-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.message-input {
+  width: 100%;
+}
+
+button[mat-raised-button] {
+  flex-shrink: 0;
+}
+/* ... (Rest of the original CSS) ... */
+
+.chat-container {
+  /* ... (Rest of the original CSS) ... */
+  position: relative; /* Add position: relative to the container */
+}
+
+.chat-container mat-card-header {
+  display: flex;
+  justify-content: space-between; /* Align title and button */
+  align-items: center;
+}
+.dropdown-with-button {
+  display: flex; /* Use flexbox to arrange elements in a row */
+  align-items: center; /* Vertically center the button */
+}
+.add-message-butt {
+  margin-bottom: 50px;
+}

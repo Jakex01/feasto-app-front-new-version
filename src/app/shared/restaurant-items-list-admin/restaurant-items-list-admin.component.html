@@ -1,0 +1,104 @@
+<form [formGroup]="menuItemsForm">
+  <div formArrayName="menuItems">
+    <mat-card *ngFor="let menuItem of filteredMenuItems; let i = index" class="custom-card">
+
+      <!-- Card Header with Filters -->
+      <mat-card-header>
+        <mat-card-title>Menu Item {{ i + 1 }}</mat-card-title>
+      </mat-card-header>
+
+      <!-- Filters Section within the Card -->
+      <div class="filter-section">
+        <mat-form-field appearance="outline" class="filter-dropdown">
+          <mat-label>Filter by Category</mat-label>
+          <mat-select [(ngModel)]="selectedCategory">
+            <mat-option [value]="null">All</mat-option>
+            <mat-option *ngFor="let category of foodCategories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filter-dropdown">
+          <mat-label>Filter by Size</mat-label>
+          <mat-select [(ngModel)]="selectedSize">
+            <mat-option [value]="null">All</mat-option>
+            <mat-option *ngFor="let size of availableSizes" [value]="size">
+              {{ size }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Select Menu Item</mat-label>
+          <mat-select [(ngModel)]="selectedMenuItem" (selectionChange)="onMenuItemChange($event.value)">
+            <mat-option *ngFor="let item of menuItems" [value]="item">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div class="container">
+      <div class="row">
+      <div class="col-md-7 item-section">
+      <mat-card-content [formGroupName]="i">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="foodCategory">
+            <mat-option *ngFor="let category of foodCategories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Size and Price Inputs -->
+        <div formArrayName="sizesWithPrices">
+          <div *ngFor="let size of getSizesWithPrices(i).controls; let j = index" [formGroupName]="j" class="size-price-container">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Size</mat-label>
+              <input matInput formControlName="size">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Price</mat-label>
+              <input matInput type="number" formControlName="price">
+            </mat-form-field>
+          </div>
+        </div>
+
+      </mat-card-content>
+      </div>
+      <div class="col-md-4 additives-section">
+          <h3>Additives</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let item of menuItems1; let i = index" class="additive-container">
+            <mat-form-field appearance="fill" class="full-width-input">
+              <input matInput [readOnly]="!item.isEditing" [(ngModel)]="item.name">
+            </mat-form-field>
+            <button mat-icon-button color="primary" (click)="toggleEdit1(item, i)">
+              <mat-icon>{{ item.isEditing ? 'done' : 'edit' }}</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="removeItem(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+        <button mat-button (click)="addNewItem()">Dodaj nowy dodatek</button>
+      </div>
+  </div>
+  </div>
+      <div class="action-buttons">
+        <button mat-button color="primary" (click)="saveItem(i)">Save</button>
+        <button mat-button color="warn" (click)="cancelEdit(i)">Cancel</button>
+      </div>
+    </mat-card>
+  </div>
+</form>

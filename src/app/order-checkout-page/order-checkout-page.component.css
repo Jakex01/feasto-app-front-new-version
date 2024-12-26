@@ -1,0 +1,108 @@
+.checkout-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 16px;
+}
+.checkout-content {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+.button-group {
+  display: flex;
+  gap: 8px; /* Odstęp pomiędzy przyciskami */
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px; /* Dodaj odstęp poniżej nagłówka */
+}
+.small-button {
+  font-size: 0.8em;
+  padding: 2px 3px; /* Zmniejsz rozmiar przycisków */
+}
+
+.small-button.active {
+  font-weight: bold;
+  border: 2px solid #000; /* Podkreślenie aktywnego przycisku */
+}
+.left-column, .right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.left-column {
+  background-color: #f3f3f3;
+  padding: 16px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.section {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.section-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+.cart-items {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+}
+.full-width {
+  width: 100%;
+}
+.payment-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.delivery-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+.payment-buttons button.selected {
+  background-color: #3f51b5 !important;
+  color: white !important;
+  font-weight: bold;
+}
+.mat-expansion-panel {
+  margin-bottom: 8px;
+}
+.item-details {
+  margin-left: 16px;
+  font-size: 0.9em;
+}
+.additive-list {
+  list-style-type: disc;
+  padding-left: 16px;
+  margin: 8px 0;
+}
+.purchase-location {
+  background-color: #e8f5e9;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: auto;
+}
+.total-price {
+  margin-top: 16px;
+  font-weight: bold;
+}
+.currency-section {
+  margin-top: 20px; /* Adds some space above the section */
+  padding: 10px 15px; /* Adds some internal padding */
+  background-color: #f9f9f9; /* Light gray background for contrast */
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #ddd; /* Subtle border for definition */
+}
+
+.currency-section h3 {
+  font-size: 16px; /* Slightly smaller font size for section title */
+  margin-bottom: 10px; /* Space between the title and the content */
+  color: #333; /* Dark gray text color */
+}

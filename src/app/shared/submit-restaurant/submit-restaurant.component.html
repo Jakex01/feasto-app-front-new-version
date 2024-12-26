@@ -1,0 +1,36 @@
+<mat-card class="restaurant-card">
+  <mat-card-header>
+    <mat-card-title>{{ restaurant.name }}</mat-card-title>
+    <mat-card-subtitle>{{ restaurant.city }}, {{ restaurant.country }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <section class="restaurant-info">
+      <h3>Restaurant Information</h3>
+      <p><strong>Street:</strong> {{ restaurant.street }}, {{ restaurant.streetNumber }}</p>
+      <p><strong>Postal Code:</strong> {{ restaurant.postalCode }}</p>
+      <p><strong>City:</strong> {{ restaurant.city }}</p>
+      <p><strong>Country:</strong> {{ restaurant.country }}</p>
+    </section>
+
+    <section class="menu-items">
+      <h3>Menu Items</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let item of restaurant.menuItems">
+          <div mat-line><strong>{{ item.name }}</strong> - {{ item.description }}</div>
+          <div mat-line>Available: {{ item.available ? 'Yes' : 'No' }}</div>
+          <div mat-line>
+            <strong>Sizes:</strong>
+            <ng-container *ngFor="let size of item.sizes; let isLast = last">
+              {{ size.size }}: {{ size.price }}<span *ngIf="!isLast">, </span>
+            </ng-container>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </section>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="editRestaurant()">Send</button>
+  </mat-card-actions>
+</mat-card>

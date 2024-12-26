@@ -1,0 +1,127 @@
+
+.offcanvas {
+  width: 350px; /* Adjust width as needed */
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.cart-header h5 {
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #333; /* Dark gray for better contrast */
+}
+
+.cart-body {
+  padding: 1rem;
+  background-color: #ffffff;
+  max-height: 700px; /* Set maximum height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.cart-item {
+  margin-bottom: 1.5rem; /* Increased spacing */
+  padding: 0.5rem;
+  background-color: #f9f9f9; /* Light gray background for each item */
+}
+
+.cart-item:nth-child(odd) {
+  background-color: #ffffff; /* Alternate colors for better distinction */
+}
+
+.item-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #0056b3; /* A deep blue for item names */
+}
+
+.item-options {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.item-divider {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-color: #ccc; /* Lighter divider color */
+}
+
+.additives, .size-price {
+  font-size: 0.9rem;
+  color: #555; /* Darker gray for better readability */
+}
+
+.option-title {
+  font-weight: bold;
+  color: #222; /* Very dark gray or black for titles */
+}
+
+.item-quantity, .item-total-price {
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+  color: #333; /* Dark gray for quantity and total price */
+}
+
+.cart-footer {
+  padding: 1rem;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  position: sticky; /* Make footer sticky */
+  bottom: 0; /* Stick to the bottom */
+}
+
+.subtotal {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #000; /* Black for subtotal */
+}
+
+.btn-checkout, .btn-add-items {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px; /* Zaokrąglenie rogów */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-checkout {
+  background-color: #3f51b5; /* Kolor fioletowy */
+  box-shadow: 0 4px 6px rgba(63, 81, 181, 0.2);
+}
+
+.btn-checkout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(63, 81, 181, 0.3);
+}
+
+.btn-add-items {
+  background-color: #ff4081; /* Kolor różowy */
+  box-shadow: 0 4px 6px rgba(255, 64, 129, 0.2);
+}
+
+.btn-add-items:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(255, 64, 129, 0.3);
+}
+
+
+.btn-close {
+  border: none;
+  color: #333;
+}
+
+.btn-close:hover {
+  color: #000;
+}

@@ -1,0 +1,72 @@
+<div class="container">
+  <h2 class="title">Current Orders</h2>
+
+  <!-- Restaurant Filter Dropdown -->
+  <div class="restaurant-filter">
+    <mat-form-field appearance="fill" class="filter-dropdown">
+      <mat-label>Select Restaurant</mat-label>
+      <mat-select [(ngModel)]="selectedRestaurantId" (selectionChange)="fetchRestaurantOrders()">
+        <mat-option [value]="null">All Restaurants</mat-option>
+        <mat-option *ngFor="let restaurant of restaurantsList" [value]="restaurant.restaurantId">
+          {{ restaurant.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Orders List -->
+  <mat-card *ngFor="let order of orderResponses" class="order-card">
+    <mat-card-header>
+      <div class="header-content">
+        <mat-card-title class="order-title">Order #{{ order.restaurantName }}</mat-card-title>
+        <mat-chip-set>
+          <mat-chip [color]="getStatusColor(order.orderStatus)" class="status-chip">
+            {{ order.orderStatus }}
+          </mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <!-- Chat Button -->
+      <button
+        mat-icon-button
+        color="warn"
+        class="chat-btn"
+        (click)="openChatModal(order)"
+        matTooltip="Open Chat"
+      >
+        <mat-icon>chat</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="order-details">
+        <div>
+          <p><span class="detail-label">Order Date:</span> {{ order.createDate | date: 'medium' }}</p>
+          <p><span class="detail-label">Total Quantity:</span> {{ calculateTotalQuantity(order.items) }}</p>
+        </div>
+        <div>
+          <h4 class="items-title">Items:</h4>
+          <ul>
+            <li *ngFor="let item of order.items">
+              {{ item.quantity }}x {{ item.name }}
+              <span *ngIf="item.note">(Note: {{ item.note }})</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        *ngFor="let status of orderStatuses"
+        mat-raised-button
+        [color]="status === order.orderStatus ? 'accent' : 'primary'"
+        [disabled]="status === order.orderStatus"
+        class="status-btn"
+        (click)="updateOrderStatus(order.restaurantId, status)"
+      >
+        {{ status }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

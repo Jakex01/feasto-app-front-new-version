@@ -1,0 +1,51 @@
+
+<div class="full-width-container"></div>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-5 d-flex">
+      <div class="local-icon-style">
+        <div class="restaurant-name">
+          {{ restaurant.name || "Default name"}}
+          <button class="btn card-button heart-button" (click)="toggleHeart(0)">
+            <i [class]="isRestaurantLiked ? 'fas fa-heart heart-filled heart-style' : 'far fa-heart heart-style'"></i>
+          </button>
+        </div>
+<!--        <div class="opening-hours"> {{restaurant.locations[0].city}}, {{restaurant.locations[0].street}} {{restaurant.locations[0].streetNumber}}</div>-->
+        <div class="opening-hours"> {{restaurant.locations[0].street + ' ' + restaurant.locations[0].streetNumber + ', ' + restaurant.locations[0].city}}</div>
+        <div class="opening-hours">Opening hours: {{restaurant.openingHours}}</div>
+
+        <button class="btn scroll-down-btn" aria-label="Scroll to next section" (click)="scrollToNextSection()">
+          <span class="material-icons icon-large icon-scroll-down-btn">keyboard_double_arrow_down</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-5 d-flex bordered-column custom-section">
+    <app-restaurant-desc-opinion [restaurant]="restaurantDataShared"></app-restaurant-desc-opinion>
+    </div>
+<nav class="categories-navbar">
+  <ul>
+    <li *ngFor="let category of uniqueFoodCategoriesSet">
+      <button type="button" class="btn btn-category" (click)="selectFoodCategory(category)">
+        {{ category }}
+      </button>
+    </li>
+  </ul>
+</nav>
+<div *ngIf="foodListByCategory.length > 0" class="food-card-container">
+  <div *ngFor="let foodItem of foodListByCategory" class="food-card">
+    <div class="food-info">
+      <h2 class="food-name">{{ foodItem.name }}</h2>
+      <p class="food-description">{{ foodItem.description }} more and more description is being written
+        more and more description is being written
+      </p>
+      <p class="food-price">{{ foodItem.lowestPrice }} zł</p>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-primary me-3" (click)="passDataToChild(foodItem.menuItemId)">
+          +
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-test-comp #child></app-test-comp>
+<div class="spacer"></div>

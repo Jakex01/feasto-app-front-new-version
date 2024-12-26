@@ -1,0 +1,38 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full screen height */
+  background-color: #f9f9f9; /* Light background */
+}
+
+.form-box {
+  padding: 20px;
+  border: 1px solid #ccc; /* Border around the form */
+  border-radius: 8px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 100%;
+  max-width: 400px; /* Max width of the form box */
+}
+
+.full-width {
+  width: 100%; /* Ensure inputs take full width */
+  margin-bottom: 16px; /* Space between fields */
+}
+
+.checkbox-center {
+  display: flex;
+  justify-content: center; /* Center align the checkbox */
+  margin-bottom: 16px;
+}
+
+button.full-width {
+  width: 100%; /* Button takes full width */
+}
+.qr-code {
+  display: block;
+  margin: 0 auto 16px;
+  max-width: 200px;
+  max-height: 200px;
+}

@@ -1,0 +1,53 @@
+<mat-card class="chat-container">
+  <mat-card-header>
+    <mat-card-title>Chat with a Restaurant</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="dropdown-with-button">
+      <mat-form-field appearance="fill" class="restaurant-select">
+        <mat-label>Restaurant</mat-label>
+        <mat-select [(ngModel)]="selectedRestaurant" (selectionChange)="onRestaurantChange()" style="width: 100%">
+          <mat-option *ngFor="let restaurant of restaurants" [value]="restaurant.id">
+            {{ restaurant.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button class="add-message-butt" mat-icon-button color="primary" (click)="openNewChatDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <!-- Messages Section -->
+    <div *ngIf="selectedRestaurant" class="messages-container">
+      <div class="messages-list">
+        <div
+          *ngFor="let message of messages[selectedRestaurant]"
+          class="message-item"
+          [ngClass]="{
+            customer: message.type === 'customer',
+            restaurant: message.type === 'restaurant'
+          }"
+        >
+          <div class="message-header">
+            <span class="sender-label">
+              {{ message.sender === 'customer' ? 'You' : 'restaurant' }}
+            </span>
+            <span class="timestamp">{{ message.timestamp }}</span>
+          </div>
+          <p class="message-content">{{ message.content }}</p>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <!-- Message Form -->
+  <mat-card-actions *ngIf="selectedRestaurant" class="message-form">
+    <mat-form-field appearance="fill" class="message-input" style="flex-grow: 1; margin-right: 10px;">
+      <mat-label>Type your message...</mat-label>
+      <input matInput [(ngModel)]="newMessage"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage()" [disabled]="!newMessage.trim()">
+      Send
+    </button>
+  </mat-card-actions>
+</mat-card>

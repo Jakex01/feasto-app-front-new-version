@@ -1,0 +1,93 @@
+/* Dodanie klasy animacji */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.info-message {
+  margin-top: 16px;
+  color: #d9534f; /* Czerwony kolor */
+  font-size: 14px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.container {
+  max-width: 400px;
+  margin: 13rem auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out; /* Animacja przy pojawieniu się */
+}
+
+/* Animacja dla przycisków social */
+.social-buttons button {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.login-form {
+  display: flex;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+.social-buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-buttons button {
+  flex: 1;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text */
+}
+
+.social-buttons button:last-child {
+  margin-right: 0; /* Remove margin for the last button */
+}
+
+.social-buttons i {
+  font-size: 16px; /* Icon size */
+}
+button:active {
+  transform: scale(0.95);
+  transition: transform 0.1s;
+}

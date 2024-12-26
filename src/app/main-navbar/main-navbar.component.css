@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+::selection {
+  background: transparent;
+  color: inherit;
+}
+
+p::selection {
+  background: transparent;
+}
+.navbar {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #f8f9fa;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 1rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+ .nav-link {
+  color: #333 !important;
+  font-size: 1.1rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand {
+  font-family: 'Arial', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+
+.nav-link {
+  margin-right: 20px;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+  color: #007bff !important;
+}
+
+.navbar-toggler {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-collapse {
+  backdrop-filter: blur(5px);
+}
+
+@media (max-width: 992px) {
+  .navbar-nav .nav-link {
+    color: #333 !important;
+    font-size: 1rem;
+  }
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.navbar-cart .btn {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+}
+
+.navbar-cart .btn i {
+  margin-right: 0.5rem;
+}
+
+
+.navbar-cart .badge {
+  padding: 0.25em 0.6em;
+}
+
+.navbar-cart .btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  margin-right: 1.1rem;
+  border-radius: 1.4rem;
+}
+@media (min-width: 992px) {
+  .navbar {
+    padding-right: 1rem;
+  }
+}
+
+.custom-large-btn {
+  font-size: 30px; /* Powiększa ikonę */
+  line-height: 1; /* Dostosowuje wysokość linii, jeśli to konieczne */
+  padding: 10px 20px; /* Zwiększa padding, jeśli potrzebujesz większego przycisku */
+  margin-right: 20px;
+}
+
+
+
+
+
+/*.offcanvas-header {*/
+/*  background-color: #343a40;*/
+/*  color: #fff;*/
+/*}*/
+
+
+/*.offcanvas-title {*/
+/*  font-size: 1.25rem;*/
+/*}*/
+
+/*!* Stylizacja tła body off-canvas *!*/
+/*.offcanvas-body {*/
+/*  background-color: #fff; !* Białe tło *!*/
+/*  color: #343a40; !* Ciemny tekst *!*/
+/*}*/
+
+/* Stylizacja przycisku zamknięcia */
+/*.btn-close {*/
+/*  filter: invert(1); !* Biały krzyżyk *!*/
+/*}*/
+
+/* Stylizacja linków nawigacyjnych */
+.nav-link {
+  color: #343a40; /* Ciemny tekst */
+  padding: 0.5rem 1rem; /* Odstępy */
+  font-size: 1rem; /* Rozmiar tekstu */
+}
+
+/* Stylizacja aktywnego linku */
+.nav-link.active {
+  background-color: #007bff; /* Niebieskie tło dla aktywnego linku */
+  color: #fff; /* Biały tekst */
+}
+
+/* Stylizacja sekcji profilu użytkownika */
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; /* Odstęp od dolnej części */
+}
+
+.user-avatar {
+  border-radius: 50%; /* Okrągły avatar */
+  margin-right: 1rem; /* Odstęp od tekstu */
+}
+
+.user-info .user-name {
+  font-weight: bold;
+}
+
+.manage-account-link {
+  color: #007bff; /* Niebieski tekst */
+  text-decoration: none; /* Bez podkreślenia */
+}
+
+.btn-close-black {
+  filter: invert(0) grayscale(100%) brightness(0);
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem 1.5rem;
+  font-weight: bold;
+}
+
+.cart-header h5 {
+  margin-bottom: 0;
+}
+
+.cart-body {
+  padding: 1rem 1.5rem;
+}
+
+.cart-delivery-address {
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.cart-items .cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cart-item-name {
+  font-weight: bold;
+}
+
+.cart-item-options {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.cart-item-price {
+  font-weight: bold;
+  text-align: right;
+}
+
+.cart-notes {
+  margin-top: 1rem;
+}
+
+.cart-notes-input {
+  width: 100%;
+  padding: 0.375rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.cart-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+.cart-footer .cart-subtotal {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.btn-checkout, .btn-add-items {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.btn-checkout {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-add-items {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+ /*To ensure that offcanvas-footer stays at the bottom */
+.offcanvas-end {
+  position: relative; /* for absolute positioning context */
+  padding-bottom: 120px; /* footer height + some space */
+}
+
+
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-title {
+  font-size: 1.25rem; /* Title size */
+  font-weight: bold; /* Title weight */
+  margin: 0; /* Remove default margin */
+}
+
+
+
+.location-details, .schedule-details {
+  background: #FFF; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1rem; /* Spacing around the content */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Add shadow */
+}
+
+.location-details span, .schedule-details span {
+  display: block; /* Make the span a block element */
+}
+
+.btn-change, .btn-schedule {
+  color: #000; /* Text color for the buttons */
+  text-decoration: underline; /* Underline text */
+  background: none; /* No background */
+  border: none; /* No border */
+}
+
+.btn-finished {
+  width: 100%; /* Full width button */
+  background-color: #000; /* Black background */
+  color: #FFF; /* White text */
+  border-radius: 20px; /* Rounded corners */
+}
+.custom-modal-content {
+  background: #f1f1f1; /* Change color as needed */
+  border-radius: 10px; /* Rounded corners for the modal */
+}
+
+.custom-modal-header {
+  background: #000; /* Dark background for the header */
+  color: #fff; /* White text color */
+  border-top-left-radius: 10px; /* Rounded top-left corner */
+  border-top-right-radius: 10px; /* Rounded top-right corner */
+  padding: 16px; /* Padding for the header */
+}
+
+.custom-modal-body {
+  background: #fff; /* White background for the body */
+  padding: 20px; /* Padding for the body */
+}
+
+.custom-input-group {
+  margin-bottom: 10px; /* Spacing between input groups */
+}
+
+.custom-form-control {
+  border-radius: 20px; /* Rounded corners for inputs */
+  box-shadow: none; /* No shadow (remove if you prefer shadow) */
+}
+
+/*.btn-close-white {*/
+/*  filter: invert(1); !* Makes the close button white *!*/
+/*}*/
+
+.custom-modal-footer {
+  background: #fff; /* White background for the footer */
+  padding: 16px; /* Padding for the footer */
+  border-bottom-left-radius: 10px; /* Rounded bottom-left corner */
+  border-bottom-right-radius: 10px; /* Rounded bottom-right corner */
+}
+
+.custom-btn-secondary {
+  color: #000; /* Text color for the secondary button */
+  background-color: transparent; /* Transparent background */
+  border: 1px solid #000; /* Border for the secondary button */
+  border-radius: 20px; /* Rounded corners for buttons */
+}
+
+.custom-btn-primary {
+  color: #fff; /* White text color for the primary button */
+  background-color: #000; /* Dark background for the primary button */
+  border-radius: 20px; /* Rounded corners for buttons */
+}
+.btn-bordered {
+  border: 1px solid #ccc; /* Light gray border */
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Optional: adding a subtle shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.btn-bordered:hover {
+  border-color: #007bff; /* Change border color on hover to a blue */
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2); /* Darker shadow on hover for more depth */
+}
+.date-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 7px; /* Horizontal space between the items */
+  flex: 0 0 auto;
+  width: calc(33.333% - 14px); /* Adjust width to fit three items, accounting for margin */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+.date-item.selected {
+  background-color: #007bff; /* Bootstrap primary color for the selected item */
+  color: #ffffff; /* White text for better readability */
+  border: 1px solid #0056b3; /* Darker border to match */
+}
+
+.date-item:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+
+.date-item .day {
+  font-weight: bold; /* Make the day bold */
+  font-size: 1rem; /* Font size for the day */
+  margin-bottom: 5px; /* Space between the day and the date */
+}
+
+.date-item .date {
+  font-size: 0.85rem; /* Slightly smaller font size for the date */
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(36%) sepia(94%) saturate(747%) hue-rotate(340deg) brightness(102%) contrast(101%);
+}
+.hours-list {
+  height: 168px; /* Height for 4 buttons */
+  overflow-y: auto; /* Enable vertical scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+}
+
+.hours-list button {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  width: 100%; /* Take full width of container */
+  box-sizing: border-box;
+  display: flex;  /* Align children (text and icon) in a row */
+  justify-content: space-between; /* Distribute space between text and icon */
+  align-items: center; /* Center align items vertically */
+}
+
+.hours-list .time-text {
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1; /* Allows text to grow and fill available space, pushing the icon to the right */
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.hours-list i {
+  margin-left: auto; /* Ensures margin is on the left of the icon, pushing it to the right */
+}
+
+.hours-list button:hover {
+  background-color: #f8f9fa; /* Slightly different background on hover */
+}
+
+.btn-close-black {
+  filter: invert(0) grayscale(100%) brightness(0);
+}
+

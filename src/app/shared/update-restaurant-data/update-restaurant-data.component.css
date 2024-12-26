@@ -1,0 +1,147 @@
+.manage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  gap: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.restaurant-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+.manage-input {
+  margin-left: 20px;
+  width: 20rem;
+  display: flex;
+}
+.fix-button {
+  margin-bottom: 30px;
+}
+.details-card {
+  height: 32rem;
+  width: 25rem;
+}
+.restaurant-details {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 1.5rem; /* Zwiększ rozmiar czcionki dla lepszego akcentowania */
+  font-weight: bold; /* Pogrubienie dla większej widoczności */
+  color: #4A4A4A; /* Ciemnoszary kolor tekstu */
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Gradient tła od fioletowego do niebieskiego */
+  -webkit-background-clip: text; /* Stosowanie gradientu bezpośrednio na tekście */
+  -webkit-text-fill-color: transparent; /* Usuwa domyślny kolor tekstu, pozwalając gradientowi prześwitywać */
+  padding: 5px 10px; /* Dodanie wewnętrznego odstępu */
+  border-radius: 5px; /* Zaokrąglone rogi dla lepszego efektu wizualnego */
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2); /* Cień dla dodatkowej głębi */
+  display: inline-block; /* Zapewnia, że tło i inne style obejmują tylko tekst */
+  transition: transform 0.3s ease-in-out; /* Animacja dla efektu hover */
+}
+
+.restaurant-details:hover {
+  transform: scale(1.05); /* Powiększenie przy najechaniu kursorem */
+  cursor: pointer; /* Zmiana kursora na wskaźnik, sugerując interakcję */
+}
+
+.choose-restaurant {
+  display: flex;
+  align-items: center; /* Aligns the select box properly */
+  width: 20rem; /* Adjust width as necessary, or use 100% if it should take full width */
+  margin-left: 20px; /* Ensures it starts from the left */
+  margin-top: 0; /* Optionally adjust top margin */
+}
+
+.mat-form-field {
+  flex: 1 1 100%; /* Make input take full width of the flexbox to avoid touching the borders */
+  padding: 0 15px; /* Add padding on both sides */
+}
+
+input[matInput] {
+  padding-right: 48px;
+}
+
+button.mat-icon-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.mat-raised-button {
+  margin-bottom: 20px;
+  border-radius: 20px;
+  color: #ffffff;
+}
+
+.mat-raised-button[color="accent"] {
+  background-color: #ff4081;
+}
+
+.mat-raised-button[color="accent"]:hover {
+  background-color: #e91e63;
+}
+
+.mat-raised-button[color="primary"] {
+  background-color: #3f51b5;
+}
+
+.mat-raised-button[color="primary"]:hover {
+  background-color: #303f9f;
+}
+
+@media (max-width: 600px) {
+  .mat-form-field {
+    width: 100%;
+    padding: 0 10px; /* Smaller padding on mobile */
+  }
+  .mat-card {
+    padding: 20px; /* Slightly reduced padding on smaller screens */
+  }
+}
+.mat-card {
+  padding: 30px; /* Increased padding inside the card */
+  margin-bottom: 20px; /* Space between cards */
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Increased gap for better spacing */
+  margin-bottom: 15px; /* Space between input rows */
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+

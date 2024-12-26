@@ -1,0 +1,99 @@
+<div class="container">
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="./assets/delicious1.jpg" class="d-block w-100" alt="Delicious Pasta">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Delicious Pasta</h5>
+        <p>Przepyszne włoskie danie, które rozpieszcza podniebienie.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="https://via.placeholder.com/800x400.png?text=Second+Slide" class="d-block w-100" alt="Juicy Steak">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Juicy Steak</h5>
+        <p>Perfekcyjnie przyrządzony stek - marzenie każdego miłośnika mięsa.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://via.placeholder.com/800x400.png?text=Third+Slide" class="d-block w-100" alt="Vegan Salad">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Vegan Salad</h5>
+        <p>Świeża i kolorowa sałatka dla poszukujących zdrowego posiłku.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Recommended by Feasto</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="./assets/delicious1.jpg" class="card-img-top rounded-circle mx-auto d-block" alt="Delicious Pasta">
+        <div class="card-body text-center">
+          <h5 class="card-title">McDonald's</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="./assets/delicious1.jpg" class="card-img-top rounded-circle mx-auto d-block" alt="Delicious Pasta">
+        <div class="card-body text-center">
+          <h5 class="card-title">Burger King</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="./assets/delicious1.jpg" class="card-img-top rounded-circle mx-auto d-block" alt="Delicious Pasta">
+        <div class="card-body text-center">
+          <h5 class="card-title">North Fish</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center">
+    <button class="btn scroll-down-btn" (click)="scrollToNextSection()" aria-label="Scroll to next section">
+      <span class="material-icons icon-large">keyboard_double_arrow_down</span>
+    </button>
+  </div>
+
+</div>
+
+<div id="nextSection" class="container next-section">
+  <h2 class="section-heading">Why Choose Feasto?</h2>
+  <div class="row feature-cards">
+    <div class="col-md-4">
+      <div class="feature-card" data-hover="Save Time!">
+        <img src="./assets/location.jpg" alt="Save Time">
+        <h3>Save Time</h3>
+        <p>Quick meal solutions at your fingertips.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card" data-hover="Feel Great!">
+        <img src="./assets/happiness.jpg" alt="Boost Happiness">
+        <h3>Boost Happiness</h3>
+        <p>Enjoy meals that make you smile.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="feature-card" data-hover="Explore Variety!">
+        <img src="./assets/diversity.jpg" alt="Restaurant Variety">
+        <h3>Restaurant Variety</h3>
+        <p>Over 300+ restaurants to choose from.</p>
+      </div>
+    </div>
+  </div>
+</div>
